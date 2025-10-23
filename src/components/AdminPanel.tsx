@@ -284,14 +284,34 @@ export default function AdminPanel() {
       </div>
 
       <Tabs defaultValue="dashboard" className="w-full">
-        <ScrollArea className="w-full">
-          <TabsList className="inline-flex w-full mb-6">
-            <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
-            <TabsTrigger value="menu">Gestión de Menú</TabsTrigger>
-            <TabsTrigger value="tables">Gestión de Mesas</TabsTrigger>
-            <TabsTrigger value="orders">Pedidos</TabsTrigger>
+        <div className="border-b mb-6 overflow-x-auto">
+          <TabsList className="w-[600px] sm:w-full flex">
+            <TabsTrigger 
+              className="flex-1 min-w-[150px] p-4 text-sm sm:text-base" 
+              value="dashboard"
+            >
+              Dashboard
+            </TabsTrigger>
+            <TabsTrigger 
+              className="flex-1 min-w-[150px] p-4 text-sm sm:text-base" 
+              value="menu"
+            >
+              Gestión de Menú
+            </TabsTrigger>
+            <TabsTrigger 
+              className="flex-1 min-w-[150px] p-4 text-sm sm:text-base" 
+              value="tables"
+            >
+              Gestión de Mesas
+            </TabsTrigger>
+            <TabsTrigger 
+              className="flex-1 min-w-[150px] p-4 text-sm sm:text-base" 
+              value="orders"
+            >
+              Pedidos
+            </TabsTrigger>
           </TabsList>
-        </ScrollArea>
+        </div>
 
         {/* Dashboard */}
         <TabsContent value="dashboard" className="space-y-6">

@@ -19,22 +19,16 @@ export function TableEditor({ tables = [], onSave }: TableEditorProps) {
 
   const addTable = () => {
     const defaultTables: Table[] = [
-      // Primera fila (2 mesas)
       { id: `table-${Date.now()}-1`, number: 1, x: 30, y: 15, seats: 4, status: 'available' },
       { id: `table-${Date.now()}-2`, number: 2, x: 70, y: 15, seats: 4, status: 'available' },
-      // Segunda fila (4 mesas)
       { id: `table-${Date.now()}-3`, number: 3, x: 20, y: 35, seats: 4, status: 'available' },
       { id: `table-${Date.now()}-4`, number: 4, x: 40, y: 35, seats: 4, status: 'available' },
       { id: `table-${Date.now()}-5`, number: 5, x: 60, y: 35, seats: 4, status: 'available' },
       { id: `table-${Date.now()}-6`, number: 6, x: 80, y: 35, seats: 4, status: 'available' },
-      // Tercera fila (1 mesa central)
       { id: `table-${Date.now()}-7`, number: 7, x: 50, y: 55, seats: 4, status: 'available' },
-      // Cuarta fila (2 mesas laterales)
       { id: `table-${Date.now()}-8`, number: 8, x: 35, y: 65, seats: 4, status: 'available' },
       { id: `table-${Date.now()}-9`, number: 9, x: 65, y: 65, seats: 4, status: 'available' },
-      // Quinta fila (1 mesa central)
       { id: `table-${Date.now()}-10`, number: 10, x: 50, y: 75, seats: 4, status: 'available' },
-      // Última fila (2 mesas)
       { id: `table-${Date.now()}-11`, number: 11, x: 35, y: 85, seats: 4, status: 'available' },
       { id: `table-${Date.now()}-12`, number: 12, x: 65, y: 85, seats: 4, status: 'available' },
     ];
@@ -113,8 +107,8 @@ export function TableEditor({ tables = [], onSave }: TableEditorProps) {
                   left: `${table.x}%`,
                   top: `${table.y}%`,
                   transform: 'translate(-50%, -50%)',
-                  width: '60px',
-                  height: '45px',
+                  width: '120px',
+                  height: '80px',
                   backgroundColor: selectedTable === index ? '#fff' : '#f8fafc'
                 }}
                 onClick={() => setSelectedTable(index)}
@@ -125,10 +119,10 @@ export function TableEditor({ tables = [], onSave }: TableEditorProps) {
                 }}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <div className="flex items-center justify-center w-5 h-5 mb-0.5 rounded-full bg-orange-100 border border-orange-200">
-                    <span className="font-medium text-xs text-orange-600">{table.number}</span>
+                  <div className="flex items-center justify-center w-8 h-8 mb-1 rounded-full bg-orange-100 border border-orange-200">
+                    <span className="font-bold text-orange-600">{table.number}</span>
                   </div>
-                  <span className="text-[9px] text-gray-600">Mesa {table.number}</span>
+                  <span className="text-xs text-gray-600">Mesa {table.number}</span>
                 </div>
               </div>
             ))}
@@ -170,6 +164,7 @@ export function TableEditor({ tables = [], onSave }: TableEditorProps) {
                     className="text-lg h-12"
                   />
                 </div>
+
                 <div>
                   <label className="text-sm font-medium block mb-2">Asientos</label>
                   <Input
