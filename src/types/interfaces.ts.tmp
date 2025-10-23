@@ -1,0 +1,60 @@
+// Minimal, clean type definitions for the project
+
+export interface MenuItem {
+  id: string;
+  name: string;
+  description?: string;
+  price: number;
+  category?: string;
+  image?: string;
+  available?: boolean;
+  sabores?: string[];
+}
+
+export interface OrderItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  notes?: string;
+}
+
+export interface Order {
+  id?: string;
+  tableId: string;
+  items: OrderItem[];
+  status: OrderStatus;
+  customerName?: string;
+  notes?: string;
+  timestamp: number;
+  total: number;
+}
+
+export type OrderStatus = 'pending' | 'preparing' | 'ready' | 'delivered' | 'cancelled';
+
+export interface Table {
+  id: string;
+  number: number;
+  status: TableStatus;
+  seats: number;
+  position?: { x: number; y: number };
+  x?: number;
+  y?: number;
+}
+
+export type TableStatus = 'available' | 'occupied' | 'ordering' | 'reserved';
+
+export interface User {
+  id: string;
+  email: string;
+  role: 'admin' | 'waiter' | 'kitchen';
+  name: string;
+}
+
+export interface TableMapProps {
+  tables: Table[];
+  onTableSelect: (tableId: string) => void;
+  selectedTable: string | null;
+  onUpdateTablePosition?: (tableId: string, position: { x: number; y: number }) => void;
+  isEditing?: boolean;
+}

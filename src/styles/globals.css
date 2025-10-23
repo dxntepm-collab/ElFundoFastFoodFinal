@@ -1,0 +1,120 @@
+/* El Fundo Vibe - Paleta de colores y estilos globales */
+:root {
+  --fundo-white: #ffffff;
+  --fundo-orange: #ff8c42;
+  --fundo-yellow: #ffd23f;
+  --fundo-light-orange: #ffb366;
+  --fundo-light-yellow: #ffe066;
+  
+  /* Estados */
+  --status-pending: #ffd23f;
+  --status-preparing: #ff8c42;
+  --status-ready: #22c55e;
+  
+  /* Sombras */
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.12);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-backdrop: blur(10px);
+}
+
+/* Degradado de fondo global */
+body {
+  background: linear-gradient(135deg, 
+    var(--fundo-white) 0%, 
+    var(--fundo-light-orange) 50%, 
+    var(--fundo-light-yellow) 100%);
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Efecto Glassmorphism */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Botones con estilo Fundo */
+.btn-fundo {
+  background: linear-gradient(135deg, var(--fundo-orange), var(--fundo-yellow));
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-fundo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
+}
+
+/* Tarjetas de producto */
+.product-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 140, 66, 0.1);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+/* Estados de pedidos */
+.status-pending {
+  background: var(--status-pending);
+  color: #8b5a00;
+}
+
+.status-preparing {
+  background: var(--status-preparing);
+  color: white;
+}
+
+.status-ready {
+  background: var(--status-ready);
+  color: white;
+}
+
+/* Animaciones suaves */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .glass-card {
+    margin: 16px;
+    border-radius: 12px;
+  }
+}

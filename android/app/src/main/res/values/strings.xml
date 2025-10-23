@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ElFundoFastFood</string>
+    <string name="title_activity_main">ElFundoFastFood</string>
+    <string name="package_name">com.elfundofastfood.app</string>
+    <string name="custom_url_scheme">com.elfundofastfood.app</string>
+</resources>

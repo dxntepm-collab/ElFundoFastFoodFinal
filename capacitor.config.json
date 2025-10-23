@@ -1,0 +1,6 @@
+{
+  "appId": "com.elfundofastfood.app",
+  "appName": "ElFundoFastFood",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

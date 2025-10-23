@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.elfundofastfood.app"
+        version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>El Fundo Fast Food</name>
+  <description>Gestión interna del restaurante</description>
+  <author email="admin@elfundofastfood.local">DXNTE</author>
+  <content src="index.html" />
+  <access origin="*" />
+  <allow-navigation href="*" />
+  <allow-intent href="*" />
+  <platform name="android">
+    <icon src="logo.png" density="mdpi" />
+  </platform>
+  <platform name="ios">
+    <icon src="logo.png" width="180" height="180" />
+  </platform>
+  <preference name="Orientation" value="portrait" />
+</widget>

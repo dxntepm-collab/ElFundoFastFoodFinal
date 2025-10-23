@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Función auxiliar para verificar roles de usuario
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isWaiter() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'waiter';
+    }
+
+    // Reglas para la colección de mesas
+    match /tables/{tableId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isAdmin();
+      allow update: if isWaiter() && 
+        request.resource.data.diff(resource.data).affectedKeys()
+        .hasOnly(['status']);
+    }
+
+    // Reglas para la colección de órdenes
+    match /orders/{orderId} {
+      allow read: if isAuthenticated();
+      allow create: if isWaiter();
+      allow update: if isAuthenticated();
+    }
+
+    // Reglas para la colección de usuarios
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+      allow read, write: if request.auth.uid == userId;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+workflows:
+  build_app:
+    name: Build Android APK and iOS IPA
+    environment:
+      vars:
+        FLUTTER_BUILD_MODE: release
+    scripts:
+      - name: Install Node.js dependencies
+        script: |
+          npm ci
+      - name: Build web (vite)
+        script: |
+          npm run build
+      - name: Install Capacitor CLI and platforms
+        script: |
+          npm install @capacitor/cli @capacitor/core @capacitor/android @capacitor/ios
+      - name: Copy web to native and sync
+        script: |
+          npx cap sync
+      - name: Build Android (assembleRelease)
+        script: |
+          cd android && ./gradlew assembleRelease
+      - name: Build iOS (archive) - requires macOS runner
+        script: |
+          cd ios && xcodebuild -workspace App/App.xcworkspace -scheme App -configuration Release archive -archivePath "$CM_BUILD_DIR/App.xcarchive"
+    artifacts:
+      - android/app/build/outputs/**/*.apk
+      - ios/App.xcarchive
