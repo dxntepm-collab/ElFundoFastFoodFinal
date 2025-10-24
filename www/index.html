@@ -24,6 +24,31 @@
 
 <body>
   <div id="root"></div>
+  <script>
+  // Este script marca tu app como "interactuada" para Chrome.
+  // Así evita que Chrome elimine datos locales (cookies, Firebase Auth, etc.)
+
+  function registerUserInteraction() {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('user_interacted', 'true');
+      document.removeEventListener('click', registerUserInteraction);
+      document.removeEventListener('keydown', registerUserInteraction);
+      document.removeEventListener('touchstart', registerUserInteraction);
+      console.log('✅ Interacción del usuario registrada.');
+    }
+  }
+
+  // Espera cualquier interacción básica del usuario
+  document.addEventListener('click', registerUserInteraction);
+  document.addEventListener('keydown', registerUserInteraction);
+  document.addEventListener('touchstart', registerUserInteraction);
+
+  // Verifica al cargar si ya se había registrado antes
+  if (localStorage.getItem('user_interacted')) {
+    console.log('🟢 Interacción previa detectada.');
+  }
+</script>
+
 </body>
 
 </html>
